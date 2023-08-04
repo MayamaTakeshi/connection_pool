@@ -51,7 +51,7 @@ class ConnectionPool
   #
   # @!visibility private
   GLOBAL_MONOTONIC_CLOCK = class_definition.new
-  private_constant :GLOBAL_MONOTONIC_CLOCK
+  #private_constant :GLOBAL_MONOTONIC_CLOCK # MayamaTakeshi to permit to use in ruby 1.8
 
   class << self
     ##

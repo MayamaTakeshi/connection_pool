@@ -1,0 +1,15 @@
+--------------------------------
+2023/08/04 takeshi:
+
+I need connection_pool to run on ruby 1.8.
+So I searched for a suitable gem version and it seems 2.2.3 (8b830d21fdc4c9ae1a41cc587e436478a280513c) will work with some small adjustment.
+
+However, eventually, 2.2.3 required
+  Process::CLOCK_MONOTONIC
+which we don't have in ruby 1.8
+
+But 2.2.2 uses 
+  Process::CLOCK_MONOTONIC
+only if available so lets try to switch to it.
+
+So this branch was created based on 2.2.2 (608f0f407161275d95e044adad48b9ae44d55ec1).

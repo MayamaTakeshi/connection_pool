@@ -1,6 +1,6 @@
 require 'thread'
 require 'timeout'
-require_relative 'monotonic_time'
+require 'connection_pool/monotonic_time'
 
 ##
 # Raised when you attempt to retrieve a connection from a pool that has been
