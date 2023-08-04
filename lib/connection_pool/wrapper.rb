@@ -1,5 +1,5 @@
 class ConnectionPool
-  class Wrapper < ::BasicObject
+  class Wrapper #< ::BasicObject
     METHODS = [:with, :pool_shutdown, :wrapped_pool]
 
     def initialize(options = {}, &block)

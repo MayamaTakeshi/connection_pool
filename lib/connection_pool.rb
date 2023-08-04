@@ -36,7 +36,7 @@ end
 # - :timeout - amount of time to wait for a connection if none currently available, defaults to 5 seconds
 #
 class ConnectionPool
-  DEFAULTS = {size: 5, timeout: 5}
+  DEFAULTS = {:size => 5, :timeout => 5}
 
   def self.wrap(options, &block)
     Wrapper.new(options, &block)
