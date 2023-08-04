@@ -55,6 +55,8 @@ class ConnectionPool
     @key_count = :"pool-#{@available.object_id}-count"
   end
 
+if Thread.respond_to?(:handle_interrupt)
+
   def with(options = {})
     Thread.handle_interrupt(Exception => :never) do
       conn = checkout(options)
@@ -67,6 +69,20 @@ class ConnectionPool
       end
     end
   end
+
+else
+
+  # jruby 1.7.x
+  def with(options = {})
+    conn = checkout(options)
+    begin
+      yield conn
+    ensure
+      checkin
+    end
+  end
+
+end
 
   def checkout(options = {})
     if ::Thread.current[@key]
